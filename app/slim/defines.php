@@ -2,28 +2,30 @@
 
 define('MICROTIME_START', microtime(true));
 
-defined('ROOT_PATH') || define('ROOT_PATH', realpath(__DIR__ . '/../..'));
-defined('TMP_PATH')  || define('TMP_PATH',  ROOT_PATH . '/tmp');
+defined('ROOT_PATH') || die();
 defined('APP_PATH')  || define('APP_PATH',  ROOT_PATH . '/app');
+defined('LIB_PATH')  || define('LIB_PATH',  ROOT_PATH . '/lib');
+defined('TMP_PATH')  || define('TMP_PATH',  ROOT_PATH . '/tmp');
 
 // Check system environment we are on (production or development system)
 // Note: If path contains ".develop" we assume we are in development mode
 define('ENVIRONMENT_PRODUCTION', 'production');
 define('ENVIRONMENT_DEVELOP', 'develop');
-define('ENVIRONMENT', strpos(__FILE__, '.develop/') === false ? ENVIRONMENT_PRODUCTION : ENVIRONMENT_DEVELOP);
+//define('ENVIRONMENT', strpos(__FILE__, '.develop/') === false ? ENVIRONMENT_PRODUCTION : ENVIRONMENT_DEVELOP);
+define('ENVIRONMENT', ENVIRONMENT_DEVELOP);
 
 define('SESSION_LIFETIME', 60 * 60 * 24 * 30);
 define('SESSION_PATH', TMP_PATH . '/session');
 
-define('LOG_PATH', TMP_PATH  . '/log');
-define('LOG_FILE', TMP_PATH . '/paniclog');
+define('LOG_PATH', ROOT_PATH  . '/log');
+define('LOG_FILE', LOG_PATH . '/paniclog');
 
 // Set up error handling
-ini_set('error_reporting', E_ALL);
 ini_set('display_errors', ENVIRONMENT == ENVIRONMENT_PRODUCTION ? 'Off' : 'stderr');
 ini_set('display_startup_errors', ENVIRONMENT == ENVIRONMENT_PRODUCTION ? 'Off' : 'On');
-ini_set('log_errors', 'On');
+ini_set('error_reporting', E_ALL);
 ini_set('error_log', LOG_PATH . '/php.log');
+ini_set('log_errors', 'On');
 
 // Set up session variables
 ini_set('session.name', 'session');

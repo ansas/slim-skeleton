@@ -1,6 +1,6 @@
 <?php
 
-defined('ROOT_PATH') || define('ROOT_PATH', realpath(__DIR__ . '/../..'));
+defined('ROOT_PATH') || define('ROOT_PATH', dirname(__DIR__));
 
 // Check if system is in maintenance mode
 // Note: Just place a file "maintenance.lock" into the project home path
@@ -18,7 +18,7 @@ if (file_exists(ROOT_PATH . '/maintenance.lock')) {
 require_once ROOT_PATH . '/app/slim/defines.php';
 
 // Set up autoloader
-require_once ROOT_PATH . '/vendor/autoload.php';
+require_once ROOT_PATH . '/lib/autoload.php';
 
 // Load settings
 $settings = require_once ROOT_PATH . '/app/slim/settings.php';

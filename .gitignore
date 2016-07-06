@@ -5,5 +5,4 @@ phpdoc.xml
 phpunit.xml
 
 ## paths
-public/plugin/
-vendor/
+pub/lib/

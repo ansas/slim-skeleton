@@ -25,6 +25,9 @@
             "App\\": "src/"
         }
     },
+    "config": {
+        "vendor-dir": "lib"
+    },
     "require": {
         "php": ">=7.0",
         "slim/slim": "~3",
@@ -34,6 +37,7 @@
         "twig/extensions": "dev-master",
         "monolog/monolog": "dev-master"
     },
+    "prefer-stable": true,
     "suggest": {
         "slim/http-cache": "Caching: client-side",
         "tedivm/stash": "Caching: server-side PSR-6",
@@ -47,9 +51,9 @@
         "phpcbf": "phpcbf --standard=PSR2 src/",
         "phpcs": "phpcs --standard=PSR2 src/",
         "post-create-project-cmd": [
-            "chmod --recursive 777 tmp"
+            "find log tmp -type d -exec chmod 2777 {} \\;"
         ],
-        "server": "php -S 0.0.0.0:8888 -t public public/index.php",
+        "server": "php -S 0.0.0.0:8888 -t pub pub/index.php",
         "test": [
             "@phpunit",
             "@phpcs"

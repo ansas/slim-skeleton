@@ -4,26 +4,35 @@ A skeleton for [Slim 3 Framework](http://slimframework.com/).
 
 ## Included libraries
 * Slim 3.x
- * Slim Flash messages
- * Slim Twig integration
-* Twig 1.x
- * Twig extensions
+ * Flash messages
+ * Twig template engine 1.x
+ * Custom Error and NotFound handler
+ * NoTrailingSlash Middleware
 
 ## Directory structure
 ```
 path/to/project
-|-- app
-|   |-- slim
-|   `-- twig
-|-- public
-|-- src
-|-- tests
-|-- tmp
-|   |-- cache
-|   `-- log
-|   `-- session
-|   `-- twig
-`-- vendor
+|-- app              <- Application config files
+|   |-- slim         <- Slim config files
+|   `-- twig         <- Twig templates
+|-- bin              <- Own scripts
+|-- etc              <- Own config files (like Apache)
+|-- lib              <- Vendor files (for composer)
+|-- log              <- Log files
+|-- pub              <- Webserver document root
+|   |-- css
+|   |-- img
+|   |-- js
+|   `-- lib
+|-- src              <- Application classes (\App namespace)
+|   |-- Controller
+|   |-- Handler
+|   |-- Middleware
+|   |-- Provider
+|   `-- Tests
+`-- tmp              <- Temporary files
+    |-- session
+    `-- twig
 ```
 
 ## Requirements
