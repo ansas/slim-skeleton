@@ -11,8 +11,7 @@ defined('TMP_PATH')  || define('TMP_PATH',  ROOT_PATH . '/tmp');
 // Note: If path contains ".develop" we assume we are in development mode
 define('ENVIRONMENT_PRODUCTION', 'production');
 define('ENVIRONMENT_DEVELOP', 'develop');
-//define('ENVIRONMENT', strpos(__FILE__, '.develop/') === false ? ENVIRONMENT_PRODUCTION : ENVIRONMENT_DEVELOP);
-define('ENVIRONMENT', ENVIRONMENT_DEVELOP);
+define('ENVIRONMENT', strpos(__FILE__, '.develop/') === false ? ENVIRONMENT_PRODUCTION : ENVIRONMENT_DEVELOP);
 
 define('SESSION_LIFETIME', 60 * 60 * 24 * 30);
 define('SESSION_PATH', TMP_PATH . '/session');
