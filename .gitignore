@@ -4,5 +4,3 @@ phpcs.xml
 phpdoc.xml
 phpunit.xml
 
-## paths
-pub/lib/
