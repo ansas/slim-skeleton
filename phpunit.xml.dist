@@ -19,7 +19,7 @@
     <!-- Add any additional test suites you want to run here -->
     <testsuites>
         <testsuite name="Test Source">
-            <directory>tests</directory>
+            <directory>scr/Tests</directory>
         </testsuite>
     </testsuites>
 
