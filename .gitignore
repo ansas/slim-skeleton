@@ -1,0 +1,9 @@
+## files
+composer.lock
+phpcs.xml
+phpdoc.xml
+phpunit.xml
+
+## paths
+public/plugin/
+vendor/

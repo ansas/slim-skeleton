@@ -1,0 +1,107 @@
+{% if c.request.getQueryParams()|length > 0 %}
+    {% set noIndex = true %}
+{% endif %}
+
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        {% block headPrepend %}
+        {% endblock headPrepend %}
+
+        {% block head %}
+            <link rel="dns-prefetch" href="//cdn.dhm80.de" crossorigin />
+            <link rel="preconnect" href="//cdn.dhm80.de" crossorigin />
+
+            <base target="_top" />
+
+            <title>{% block title %}Willkommen{% endblock %}</title>
+
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+            {% if not noIndex %}
+                <meta name="description" lang="de" content="{% block description %}{% endblock %}" />
+                <meta name="robots" content="index, follow">
+            {% else %}
+                <meta name="robots" content="noindex, follow" />
+            {% endif %}
+
+            <meta name="author" content="Ansas Meyer" />
+            <meta name="rating" content="general" />
+
+            <meta property="og:locale" content="de_DE" />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content="{{ block('title') }}" />
+            <meta property="og:description" content="" />
+            <meta property="og:url" content="{{ c.request.getUri() }}" />
+            <meta property="og:image" content="" />
+            <meta property="og:image:width" content="200" />
+            <meta property="og:image:height" content="200" />
+
+            <meta name="twitter:card" content="summary" />
+            <meta name="twitter:title" content="{{ block('title') }}" />
+            <meta name="twitter:description" content="" />
+            <meta name="twitter:image" content="" />
+
+            <link rel="shortcut icon" href="/favicon.ico" />
+            <link rel="apple-touch-icon" href="/apple-touch-icon-precomposed.png" />
+            <link rel="manifest" href="/manifest.json" />
+
+            {% block stylePrepend %}
+            {% endblock stylePrepend %}
+
+            {% block style %}
+                <link rel="stylesheet" href='//cdn.dhm80.de/font/open-sans/font.css'>
+                <link rel="stylesheet" href="//cdn.dhm80.de/plugin/bootstrap/dist/css/bootstrap.css" />
+                <link rel="stylesheet" href="/css/base.css" />
+            {% endblock style %}
+
+            {% block styleAppend %}
+            {% endblock styleAppend %}
+        {% endblock head %}
+
+        {% block headAppend %}
+        {% endblock headAppend %}
+    </head>
+
+    <body>
+        {% block bodyPrepend %}
+        {% endblock bodyPrepend %}
+
+        {% block body %}
+            {% block contentPrepend %}
+            {% endblock contentPrepend %}
+
+            {% block content %}
+            {% endblock content %}
+
+            {% block contentAppend %}
+            {% endblock contentAppend %}
+
+            {% block footerPrepend %}
+            {% endblock footerPrepend %}
+
+            {% block footer %}
+                <div class="container">
+                    &copy;{{ "now"|date("Y") }} {{ c.request.getUri().getHost() }}
+                </div>
+            {% endblock footer %}
+
+            {% block footerAppend %}
+            {% endblock footerAppend %}
+
+            {% block scriptPrepend %}
+            {% endblock scriptPrepend %}
+
+            {% block script %}
+                <script src="/js/base.js"></script>
+            {% endblock script %}
+
+            {% block scriptAppend %}
+            {% endblock scriptAppend %}
+        {% endblock body %}
+
+        {% block bodyAppend %}
+        {% endblock bodyAppend %}
+    </body>
+</html>

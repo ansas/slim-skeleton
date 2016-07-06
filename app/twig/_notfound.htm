@@ -1,0 +1,23 @@
+{% extends "_base.htm" %}
+
+{% set noIndex = true %}
+{% set refreshInSeconds = 5 %}
+
+{% block title %}Oops, Seite nicht gefunden{% endblock %}
+
+{% block headPrepend %}
+    <meta http-equiv="refresh" content="{{ refreshInSeconds }}; url={{ c.router.pathFor('index') }}">
+{% endblock headPrepend %}
+
+{% block content %}
+    <h1 class="text-danger">
+        Oops!?
+    </h1>
+    <div class="panel-body">
+        <p>
+            Na, da hat was nicht geklappt. Die gewünschte Seite existiert gar nicht (mehr).
+        </p>
+        Hier geht es <a href="{{ app.urlFor('index' ) }}">zurück zur Startseite</a><br>
+        <small class="text-muted">(Du solltest aber nach spätestens {{ refreshInSeconds }} Sekunden automatisch weitergeleitet werden)</small>
+    </div>
+{% endblock content %}

@@ -1,0 +1,58 @@
+{
+    "name": "ansas/slim-skeleton",
+    "type": "application",
+    "description": "Slim 3 framework skeleton (for a web service or application)",
+    "keyworks": [
+        "Slim",
+        "Slim 3",
+        "Framework",
+        "Scaffolding",
+        "Skel",
+        "Skeleton",
+        "Flash",
+        "Twig"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ansas Meyer",
+            "email": "webmaster@ansas-meyer.de",
+            "homepage": "https://ansas-meyer.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.0",
+        "slim/slim": "~3",
+        "slim/flash": "dev-master",
+        "slim/twig-view": "dev-master",
+        "twig/twig": "~1",
+        "twig/extensions": "dev-master",
+        "monolog/monolog": "dev-master"
+    },
+    "suggest": {
+        "slim/http-cache": "Caching: client-side",
+        "tedivm/stash": "Caching: server-side PSR-6",
+        "squizlabs/php_codesniffer": "Coding standard - should be installed globally",
+        "phpdocumentor/phpdocumentor": "Documentation - should be installed globally",
+        "phpunit/phpunit": "Testing - should be installed globally"
+    },
+    "scripts": {
+        "bootstrap": "@post-create-project-cmd",
+        "phpunit": "phpunit",
+        "phpcbf": "phpcbf --standard=PSR2 src/",
+        "phpcs": "phpcs --standard=PSR2 src/",
+        "post-create-project-cmd": [
+            "chmod --recursive 777 tmp"
+        ],
+        "server": "php -S 0.0.0.0:8888 -t public public/index.php",
+        "test": [
+            "@phpunit",
+            "@phpcs"
+        ]
+    }
+}
