@@ -1,7 +1,9 @@
 <?php
 
-define('MICROTIME_START', microtime(true));
+// Set skript start time
+isset($_SERVER['REQUEST_TIME_FLOAT']) || $_SERVER['REQUEST_TIME_FLOAT'] = microtime(true);
 
+// Set default path constants
 defined('ROOT_PATH') || die();
 defined('APP_PATH')  || define('APP_PATH',  ROOT_PATH . '/app');
 defined('LIB_PATH')  || define('LIB_PATH',  ROOT_PATH . '/lib');
