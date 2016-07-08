@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Slim\Container;
+use Slim\Http\Request;
 use Slim\Http\Response;
 
 abstract class AbstractController
@@ -31,6 +32,21 @@ abstract class AbstractController
     public function __get($name)
     {
         return $this->container->get($name);
+    }
+
+    /**
+     * Not found
+     *
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     *
+     * @return Response
+     */
+    public function notFound(Request $request, Response $response, $args)
+    {
+        $handler = $this->notFoundHandler;
+        return $handler($request, $response);
     }
 
     /**
