@@ -14,6 +14,8 @@ class ErrorProvider extends AbstractProvider
      */
     public function register(Container $container)
     {
+        $container['defaultErrorHandler'] = $container->raw('phpErrorHandler');
+
         $container['errorHandler'] = function ($container) {
             return new ErrorHandler($container);
         };

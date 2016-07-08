@@ -18,9 +18,15 @@ class NotFoundHandler extends AbstractHandler
      */
     public function __invoke(Request $request, Response $response)
     {
-        return $this->view->render(
-            $response,
-            '_notfound' . $this->settings['view']['extension']
-        );
+        $acceptHeader = $request->getHeaderLine('Accept');
+        if (stripos($acceptHeader, 'html') !== false) {
+            return $this->view->render(
+                $response,
+                '_notfound' . $this->settings['view']['extension']
+            );
+        }
+
+        $handler = $this->defaultNotFoundHandler;
+        return $handler($request, $response);
     }
 }

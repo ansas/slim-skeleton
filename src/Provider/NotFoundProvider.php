@@ -14,6 +14,8 @@ class NotFoundProvider extends AbstractProvider
      */
     public function register(Container $container)
     {
+        $container['defaultNotFoundHandler'] = $container->raw('notFoundHandler');
+
         $container['notFoundHandler'] = function ($container) {
             return new NotFoundHandler($container);
         };
