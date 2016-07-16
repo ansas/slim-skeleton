@@ -28,6 +28,7 @@ path/to/project
 |   |-- Controller
 |   |-- Handler
 |   |-- Middleware
+|   |-- Model
 |   |-- Provider
 |   `-- Tests
 `-- tmp              <- Temporary files

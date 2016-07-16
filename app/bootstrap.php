@@ -34,5 +34,4 @@ require_once ROOT_PATH . '/app/slim/dependencies.php';
 require_once ROOT_PATH . '/app/slim/middlewares.php';
 require_once ROOT_PATH . '/app/slim/routes.php';
 
-// Run
 return $app;
