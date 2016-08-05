@@ -2,13 +2,19 @@
 
 A skeleton for [Slim 3 Framework](http://slimframework.com/).
 
-## Included libraries
+This skeleton followes several PHP Standards Recommendations (PSR):
+- PSR-1 / PSR-2 (Coding standards)
+- PSR-3 (Logging) via Monolog
+- PSR-4 (Autoloading) via Composer
+- PSR-7 (HTTP message) via Slim
+
+## Included components
 * Slim 3.x
- * Flash messages
- * Twig template engine 1.x
- * Custom Error and NotFound handler
- * Middlewares: Cors, ForceRoute, Runtime, NoTrailingSlash, etc.
- * Provider: ConsoleLoggerProvider, ExtendedRequestProvider, PdoProvider, ProfilerProvider, etc.
+* Flash messages
+* Twig template engine 1.x
+* Custom Error and NotFound handler
+* Middlewares: Cors, ForceRoute, Runtime, NoTrailingSlash, etc.
+* Provider: ConsoleLoggerProvider, ExtendedRequestProvider, PdoProvider, ProfilerProvider, etc.
 
 ## Directory structure
 ```
@@ -40,7 +46,7 @@ path/to/project
 ## Requirements
 
 * PHP 7
-* [Composer][compoer]
+* [Composer](https://getcomposer.org/)
 
 ## Usage
 
