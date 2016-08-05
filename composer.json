@@ -53,6 +53,7 @@
         "post-create-project-cmd": [
             "find log tmp -type d -exec chmod 2777 {} \\;"
         ],
+        "run": "php bin/console.php",
         "server": "php -S 0.0.0.0:8888 -t pub pub/index.php",
         "test": [
             "@phpunit",

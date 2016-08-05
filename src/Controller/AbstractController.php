@@ -2,45 +2,55 @@
 
 namespace App\Controller;
 
+use Ansas\Monolog\Profiler;
+use Monolog\Logger;
+use PDO;
 use Slim\Container;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
+/**
+ * @property-read Logger $logger
+ * @property-read Profiler $profiler
+ * @property-read PDO $pdo
+ */
 abstract class AbstractController
 {
-    /** @var \Slim\Container Stores slim container */
+    /**
+     * @var Container
+     */
     protected $container;
 
-    protected $data = array();
+    /**
+     * @var array
+     */
+    protected $data = [];
 
     /**
-     * Constructor
-     *
-     * @param \Slim\Container $container Slim framework container
+     * AbstractController constructor.
+     * @param Container $container
      */
     public function __construct(Container $container)
     {
         $this->container = $container;
     }
-    
+
     /**
-     * Magic getter for access to Slim container.
+     * Magic getter for easier access to container.
      * <code>$this->logger->info('hello world!');</code>
-     *
-     * @param String $name Name of parameter to lookup
+     * @param  string $name
+     * @return mixed
      */
-    public function __get($name)
+    public function __get(string $name)
     {
         return $this->container->get($name);
     }
 
     /**
-     * Not found
-     *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     *
+     * Not found.
+     * @param  Request $request
+     * @param  Response $response
+     * @param  array $args
      * @return Response
      */
     public function notFound(Request $request, Response $response, $args)
@@ -50,14 +60,12 @@ abstract class AbstractController
     }
 
     /**
-     * Redirect to specific route
-     *
-     * @param ResponseInterface $response
-     * @param string            $route The route to rediect to
-     * @param array             $params (optional) Route params
-     * @param string            $suffix (optional) URL suffix like query string
-     *
-     * @return ResponseInterface
+     * Redirect to specific route.
+     * @param  Response $response
+     * @param  string $route The route to rediect to
+     * @param  array $params (optional) Route params
+     * @param  string $suffix (optional) URL suffix like query string
+     * @return Response
      */
     public function redirectToRoute(Response $response, $route, $params = [], $suffix = '')
     {
@@ -66,13 +74,11 @@ abstract class AbstractController
     }
 
     /**
-     * Renders template with previous set data
-     *
-     * @param ResponseInterface $response
-     * @param string            $template The template to render
-     * @param int               $status (optional) Response status code
-     *
-     * @return ResponseInterface
+     * Renders template with previous set data.
+     * @param  Response $response
+     * @param  string $template The template to render
+     * @param  int $status (optional) Response status code
+     * @return Response
      */
     public function renderTemplate(Response $response, $template, $status = null)
     {
@@ -82,16 +88,10 @@ abstract class AbstractController
         return $this->view->render($response, $template . $this->settings['view']['extension'], $this->getData());
     }
 
-    public function addData($key, $value)
-    {
-        $this->data[$key] = $value;
-        return $this;
-    }
-    public function clearData()
-    {
-        $this->data = array();
-        return $this;
-    }
+    /**
+     * @param  null $key
+     * @return array|mixed|null
+     */
     public function getData($key = null)
     {
         if ($key) {
@@ -102,16 +102,46 @@ abstract class AbstractController
         }
         return $this->data;
     }
+
+    /**
+     * @param  array $data
+     * @return $this
+     */
+    public function setData(array $data)
+    {
+        $this->data = $data;
+        return $this;
+    }
+
+    /**
+     * @param  $key
+     * @param  $value
+     * @return $this
+     */
+    public function addData($key, $value)
+    {
+        $this->data[$key] = $value;
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function clearData()
+    {
+        $this->data = array();
+        return $this;
+    }
+
+    /**
+     * @param  $key
+     * @return $this
+     */
     public function removeData($key)
     {
         if (isset($this->data[$key])) {
             unset($this->data[$key]);
         }
-        return $this;
-    }
-    public function setData(array $data)
-    {
-        $this->data = $data;
         return $this;
     }
 }

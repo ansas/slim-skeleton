@@ -61,27 +61,15 @@ class ErrorHandler extends AbstractHandler
 
         static $errorsLogged = [];
 
-        // get: hash of Throwable object
+        // Get hash of Throwable object
         $errorObjectHash = spl_object_hash($e);
 
         // check: only log if we haven't logged this exact error before
         if (!isset($errorsLogged[$errorObjectHash])) {
-            // log: error
-            $this->logger->error(
-                sprintf(
-                    "[%s] Slim Error: %s in %s on line %d\n%s\n",
-                    date(DateTime::ATOM),
-                    $e->getMessage(),
-                    $e->getFile(),
-                    $e->getLine(),
-                    $e->getTraceAsString()
-                )
-            );
-            while ($prev = $e->getPrevious()) {
-                $this->logError($prev, $previous = true);
-            }
+            // Log
+            $this->logger->error(get_class($e), ['exception' => $e]);
 
-            // save: information that we have logged this error
+            // Save information that we have logged this error
             $errorsLogged[$errorObjectHash] = true;
         }
     }

@@ -5,11 +5,14 @@ namespace App\Provider;
 use Pimple\Container;
 use App\Handler\ExtendedRequestHandler;
 
+/**
+ * Class ExtendedRequestProvider
+ * @package App\Provider
+ */
 class ExtendedRequestProvider extends AbstractProvider
 {
     /**
-     * Register NotFound Service Provider.
-     *
+     * Register Provider.
      * @param Container $container
      */
     public function register(Container $container)

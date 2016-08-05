@@ -14,6 +14,7 @@ defined('TMP_PATH')  || define('TMP_PATH',  ROOT_PATH . '/tmp');
 define('ENVIRONMENT_PRODUCTION', 'production');
 define('ENVIRONMENT_DEVELOP', 'develop');
 define('ENVIRONMENT', strpos(__FILE__, '.develop/') === false ? ENVIRONMENT_PRODUCTION : ENVIRONMENT_DEVELOP);
+define('DEBUG', getenv('DEBUG') || ENVIRONMENT == ENVIRONMENT_DEVELOP);
 
 define('SESSION_LIFETIME', 60 * 60 * 24 * 30);
 define('SESSION_PATH', TMP_PATH . '/session');

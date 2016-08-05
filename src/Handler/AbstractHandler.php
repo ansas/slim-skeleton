@@ -6,24 +6,24 @@ use Slim\Container;
 
 abstract class AbstractHandler
 {
-    /** @var \Slim\Container Stores slim container */
+    /** @var Container */
     protected $container;
 
     /**
-     * Constructor
-     *
-     * @param \Slim\Container $container Slim framework container
+     * AbstractHandler constructor.
+     * @param Container $container
      */
     public function __construct(Container $container)
     {
         $this->container = $container;
     }
-    
+
     /**
      * Magic getter for access to Slim container.
      * <code>$this->logger->info('hello world!');</code>
      *
-     * @param String $name Name of parameter to lookup
+     * @param  string $name
+     * @return mixed
      */
     public function __get($name)
     {

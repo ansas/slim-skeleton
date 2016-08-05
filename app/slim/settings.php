@@ -12,13 +12,21 @@ return [
         'logger' => [
             'name' => 'app',
             'path' => LOG_PATH . '/app.log',
-            'level' => ENVIRONMENT == ENVIRONMENT_DEVELOP ? Logger::DEBUG : Logger::ERROR,
+            'level' => DEBUG ? Logger::DEBUG : Logger::ERROR,
+            'trimPaths' => [ROOT_PATH . "/"],
+        ],
+
+        // PDO settings
+        'database' => [
+            'dsn' => "mysql:host=localhost;dbname=<DB>",
+            "user" => "<USER>",
+            "password" => "<PWD>",
         ],
 
         // Twig settings
         'view' => [
             'path' => APP_PATH . '/twig',
-            'extension' => '.htm',
+            'extension' => '.twig',
             'options' => [
                 'autoescape' => true,
                 'auto_reload' => true,

@@ -7,7 +7,8 @@ A skeleton for [Slim 3 Framework](http://slimframework.com/).
  * Flash messages
  * Twig template engine 1.x
  * Custom Error and NotFound handler
- * NoTrailingSlash Middleware
+ * Middlewares: Cors, ForceRoute, Runtime, NoTrailingSlash, etc.
+ * Provider: ConsoleLoggerProvider, ExtendedRequestProvider, PdoProvider, ProfilerProvider, etc.
 
 ## Directory structure
 ```
@@ -56,6 +57,15 @@ $ cd path/to/project
 $ composer server
 ```
 Open web browser with address http://any-domain-pointing-to-server:8888
+
+### Call controller from console
+
+```shell
+$ cd path/to/project
+$ composer run The\Controller\YouWantToRun <- calls __invoke()
+$ composer run The\Controller\YouWantToRun:methodWanted
+$ composer run The\Controller\YouWantToRun:methodWanted parem1=yes param2=hi
+```
 
 ### Test / Check coding style and test code
 
