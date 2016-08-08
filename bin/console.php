@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 
 defined('ROOT_PATH') || define('ROOT_PATH', dirname(__DIR__));
@@ -20,9 +21,14 @@ try {
         $params[trim($parts[0])] = isset($parts[1]) ? trim($parts[1]) : null;
     }
 
+    // Sanitize class
+    $class = str_replace('/', '\\', $class);
+    $class = preg_replace('/Controller(\\\\)?$/ui', '', $class);
+    $class = preg_replace('/^(\\\\)?(App\\\\)?Controller\\\\/ui', '', $class);
+
     // Set fixed path and build handler
     $path    = "/console";
-    $handler = "App\\Controller\\" . str_replace('/', '\\', trim($class, DIRECTORY_SEPARATOR)) . "Controller" . ($method ? ":" . $method : "");
+    $handler = "App\\Controller\\" . $class . "Controller" . ($method ? ":" . $method : "");
 
     // Set mock environment and add needed additional providers
     $container = $app->getContainer();
