@@ -12,7 +12,7 @@ return [
         'logger' => [
             'name' => 'app',
             'path' => LOG_PATH . '/app.log',
-            'level' => DEBUG ? Logger::DEBUG : Logger::ERROR,
+            'level' => DEBUG ? Logger::DEBUG : Logger::NOTICE,
             'trimPaths' => [ROOT_PATH . "/"],
         ],
 

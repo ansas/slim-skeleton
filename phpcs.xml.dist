@@ -3,8 +3,7 @@
     <description>Slim coding standard</description>
     <!-- Paths to check -->
     <file>src</file>
-    <file>tests</file>
-    <file>app/config</file>
+    <file>app/slim</file>
 
     <!-- display progress -->
     <arg value="p" />

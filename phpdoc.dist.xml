@@ -2,7 +2,7 @@
 <phpdoc>
     <title>Application</title>
     <parser>
-        <target>docs</target>
+        <target>doc/cache</target>
         <default-package-name>Documentation</default-package-name>
         <markers>
             <item>TODO</item>
@@ -13,9 +13,10 @@
         </extensions>
     </parser>
     <transformer>
-        <target>docs</target>
+        <target>doc</target>
     </transformer>
     <transformations>
+        <template name="checkstyle" />
         <template name="responsive" />
     </transformations>
     <files>

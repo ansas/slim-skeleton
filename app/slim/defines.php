@@ -5,9 +5,15 @@ isset($_SERVER['REQUEST_TIME_FLOAT']) || $_SERVER['REQUEST_TIME_FLOAT'] = microt
 
 // Set default path constants
 defined('ROOT_PATH') || die();
-defined('APP_PATH')  || define('APP_PATH',  ROOT_PATH . '/app');
-defined('LIB_PATH')  || define('LIB_PATH',  ROOT_PATH . '/lib');
-defined('TMP_PATH')  || define('TMP_PATH',  ROOT_PATH . '/tmp');
+defined('APP_PATH')  || define('APP_PATH', ROOT_PATH . '/app');
+defined('BIN_PATH')  || define('BIN_PATH', ROOT_PATH . '/bin');
+defined('ETC_PATH')  || define('ETC_PATH', ROOT_PATH . '/etc');
+defined('LIB_PATH')  || define('LIB_PATH', ROOT_PATH . '/lib');
+defined('LOG_PATH')  || define('LOG_PATH', ROOT_PATH . '/log');
+defined('PUB_PATH')  || define('PUB_PATH', ROOT_PATH . '/pub');
+defined('SRC_PATH')  || define('SRC_PATH', ROOT_PATH . '/src');
+defined('TMP_PATH')  || define('TMP_PATH', ROOT_PATH . '/tmp');
+defined('VAR_PATH')  || define('VAR_PATH', ROOT_PATH . '/var');
 
 // Check system environment we are on (production or development system)
 // Note: If path contains ".develop" we assume we are in development mode
@@ -19,7 +25,6 @@ define('DEBUG', getenv('DEBUG') || ENVIRONMENT == ENVIRONMENT_DEVELOP);
 define('SESSION_LIFETIME', 60 * 60 * 24 * 30);
 define('SESSION_PATH', TMP_PATH . '/session');
 
-define('LOG_PATH', ROOT_PATH  . '/log');
 define('LOG_FILE', LOG_PATH . '/paniclog');
 
 // Set up error handling

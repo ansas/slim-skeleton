@@ -85,6 +85,7 @@ abstract class AbstractController
         if ($status) {
             $response = $response->withStatus($status);
         }
+
         return $this->view->render($response, $template . $this->settings['view']['extension'], $this->getData());
     }
 
@@ -100,6 +101,7 @@ abstract class AbstractController
             }
             return null;
         }
+
         return $this->data;
     }
 
@@ -110,6 +112,7 @@ abstract class AbstractController
     public function setData(array $data)
     {
         $this->data = $data;
+
         return $this;
     }
 
@@ -121,6 +124,7 @@ abstract class AbstractController
     public function addData($key, $value)
     {
         $this->data[$key] = $value;
+
         return $this;
     }
 
@@ -129,7 +133,8 @@ abstract class AbstractController
      */
     public function clearData()
     {
-        $this->data = array();
+        $this->data = [];
+
         return $this;
     }
 
@@ -142,6 +147,7 @@ abstract class AbstractController
         if (isset($this->data[$key])) {
             unset($this->data[$key]);
         }
+
         return $this;
     }
 }
