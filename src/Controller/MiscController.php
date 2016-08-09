@@ -1,20 +1,34 @@
 <?php
+/**
+ * This file is part of the PHP components package.
+ *
+ * For the full copyright and license information, please view the LICENSE.md file distributed with this source code.
+ *
+ * @license MIT License
+ * @link    https://github.com/ansas/php-component
+ */
 
 namespace App\Controller;
 
+use Ansas\Slim\Controller\AbstractController;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Throwable;
 
 /**
- * Example controller
+ * Class MiscController
+ *
+ * @package App\Controller
+ * @author  Ansas Meyer <mail@ansas-meyer.de>
  */
 class MiscController extends AbstractController
 {
     /**
      * Index.
+     *
      * @param  Request  $request  The most recent Request object
      * @param  Response $response The most recent Response object
+     *
      * @return Response
      */
     public function index(Request $request, Response $response)
@@ -24,8 +38,10 @@ class MiscController extends AbstractController
 
     /**
      * Not found handler.
+     *
      * @param  Request  $request  The most recent Request object
      * @param  Response $response The most recent Response object
+     *
      * @return Response
      */
     public function notFound(Request $request, Response $response)
@@ -35,9 +51,11 @@ class MiscController extends AbstractController
 
     /**
      * Error handler.
+     *
      * @param  Request   $request  The most recent Request object
      * @param  Response  $response The most recent Response object
      * @param  Throwable $e
+     *
      * @return Response
      */
     public function error(Request $request, Response $response, Throwable $e)

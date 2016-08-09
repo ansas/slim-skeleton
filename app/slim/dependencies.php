@@ -1,9 +1,12 @@
 <?php
 
+use Ansas\Slim\Provider;
+
 // Register service providers & factories
-$container->register(new \App\Provider\ExtendedRequestProvider());
-$container->register(new \App\Provider\ErrorProvider());
-$container->register(new \App\Provider\FlashProvider());
-$container->register(new \App\Provider\LoggerProvider());
-$container->register(new \App\Provider\NotFoundProvider());
-$container->register(new \App\Provider\TwigProvider());
+$container->register(new Provider\DataProvider());
+$container->register(new Provider\ExtendedRequestProvider());
+$container->register(new Provider\ErrorProvider());
+$container->register(new Provider\FlashProvider());
+$container->register(new Provider\LoggerProvider());
+$container->register(new Provider\NotFoundProvider());
+$container->register(new Provider\TwigProvider());

@@ -1,10 +1,14 @@
 #!/usr/bin/env php
 <?php
 
-defined('ROOT_PATH') || define('ROOT_PATH', dirname(__DIR__));
+use Ansas\Slim\Middleware;
+use Ansas\Slim\Provider;
+use Slim\App;
+use Slim\Container;
+use Slim\Http\Environment;
 
-/** @var \Slim\App $app */
-$app = require_once ROOT_PATH . '/app/bootstrap.php';
+$rootPath = dirname(__DIR__);
+defined('ROOT_PATH') || define('ROOT_PATH', $rootPath);
 
 try {
     // Parse server args and build request
@@ -30,15 +34,20 @@ try {
     $path    = "/console";
     $handler = "App\\Controller\\" . $class . "Controller" . ($method ? ":" . $method : "");
 
-    // Set mock environment and add needed additional providers
-    $container = $app->getContainer();
-    $container['environment'] = \Slim\Http\Environment::mock();
-    $container->register(new \App\Provider\ConsoleLoggerProvider());
-    $container->register(new \App\Provider\PdoProvider());
-    $container->register(new \App\Provider\ProfilerProvider());
+    /** @var App $app */
+    $app = require_once $rootPath . '/app/bootstrap.php';
 
     // Add middleware to force our fake route with specified params
-    $app->add(new App\Middleware\ForceRoute($path, $params));
+    $app->add(new Middleware\ForceRoute($path, $params));
+
+    /** @var Container $container */
+    $container = $app->getContainer();
+
+    // Set mock environment and add needed additional providers
+    $container['environment'] = Environment::mock();
+    $container->register(new Provider\ConsoleLoggerProvider());
+    $container->register(new Provider\PdoProvider());
+    $container->register(new Provider\ProfilerProvider());
 
     // Add fake route with calculated dynamic handler and run the app
     $app->get($path, $handler);
