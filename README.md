@@ -83,6 +83,7 @@ $ composer test
 ## Contribute
 
 Everybody can contribute to this package. Just:
+
 1. fork it, 
 2. make your changes and 
 3. send a pull request.
