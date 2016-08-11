@@ -82,9 +82,12 @@ $ composer test
 
 ## Contribute
 
-Everybody can contribute to this package. Just fork it, make your changes and send a pull request.
+Everybody can contribute to this package. Just:
+1. fork it, 
+2. make your changes and 
+3. send a pull request.
 
-Just make sure you follow [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md) and [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) coding conventions.
+Please make sure to follow [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md) and [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) coding conventions.
 
 
 ## License
