@@ -33,10 +33,10 @@ path/to/project
 |   `-- lib
 |-- src              <- Application classes (\App namespace)
 |   |-- Controller
-|   |-- Handler
-|   |-- Middleware
+|   |-- Handler      <- Put custom handlers here
+|   |-- Middleware   <- Put custom middlewares here
 |   |-- Model
-|   |-- Provider
+|   |-- Provider     <- Put custom providers here
 |   `-- Tests
 `-- tmp              <- Temporary files
     |-- session
@@ -79,3 +79,14 @@ $ composer run The\Controller\YouWantToRun:methodWanted parem1=yes param2=hi
 $ cd path/to/project
 $ composer test
 ```
+
+## Contribute
+
+Everybody can contribute to this package. Just fork it, make your changes and send a pull request.
+
+Just make sure you follow [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md) and [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) coding conventions.
+
+
+## License
+
+See the `LICENSE` file.
