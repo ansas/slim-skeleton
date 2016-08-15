@@ -6,7 +6,7 @@
 {% block title %}Oops, Seite nicht gefunden{% endblock %}
 
 {% block headPrepend %}
-    <meta http-equiv="refresh" content="{{ refreshInSeconds }}; url={{ c.router.pathFor('index') }}">
+    <meta http-equiv="refresh" content="{{ refreshInSeconds }}; url={{ c.router.pathFor('index') }}" />
 {% endblock headPrepend %}
 
 {% block content %}
@@ -17,7 +17,7 @@
         <p>
             Na, da hat was nicht geklappt. Die gewünschte Seite existiert gar nicht (mehr).
         </p>
-        Hier geht es <a href="{{ app.urlFor('index' ) }}">zurück zur Startseite</a><br>
+        Hier geht es <a href="{{ c.router.pathFor('index') }}">zurück zur Startseite</a><br>
         <small class="text-muted">(Du solltest aber nach spätestens {{ refreshInSeconds }} Sekunden automatisch weitergeleitet werden)</small>
     </div>
 {% endblock content %}
