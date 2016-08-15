@@ -10,6 +10,13 @@ use Slim\Http\Environment;
 $rootPath = dirname(__DIR__);
 defined('ROOT_PATH') || define('ROOT_PATH', $rootPath);
 
+// Check if system is in maintenance mode
+// Note: Just place a file "maintenance.lock" into the project home path
+if (file_exists($rootPath . '/maintenance.lock')) {
+    echo("Wartungsarbeiten!" . "\n");
+    exit(503);
+}
+
 try {
     // Parse server args and build request
     $class  = null;

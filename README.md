@@ -3,10 +3,10 @@
 A skeleton for [Slim 3 Framework](http://slimframework.com/).
 
 This skeleton followes several PHP Standards Recommendations (PSR):
-- PSR-1 / PSR-2 (Coding standards)
-- PSR-3 (Logging) via Monolog
-- PSR-4 (Autoloading) via Composer
-- PSR-7 (HTTP message) via Slim
+- [x] PSR-1 / PSR-2 (Coding standards)
+- [x] PSR-3 (Logging) via Monolog
+- [x] PSR-4 (Autoloading) via Composer
+- [x] PSR-7 (HTTP message) via Slim
 
 ## Included components
 * Slim 3.x
@@ -93,4 +93,4 @@ Please make sure to follow [PSR-1](https://github.com/php-fig/fig-standards/blob
 
 ## License
 
-See the `LICENSE` file.
+See the [LICENSE](LICENSE) file.
