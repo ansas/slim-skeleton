@@ -1,5 +1,10 @@
 # Slim 3 Skeleton
 
+[![Latest Stable Version](https://poser.pugx.org/ansas/slim-skeleton/v/stable)](https://packagist.org/packages/ansas/slim-skeleton)
+[![Total Downloads](https://poser.pugx.org/ansas/slim-skeleton/downloads)](https://packagist.org/packages/ansas/slim-skeleton)
+[![Latest Unstable Version](https://poser.pugx.org/ansas/slim-skeleton/v/unstable)](https://packagist.org/packages/ansas/slim-skeleton)
+[![License](https://poser.pugx.org/ansas/slim-skeleton/license)](https://packagist.org/packages/ansas/slim-skeleton)
+
 A skeleton for [Slim 3 Framework](http://slimframework.com/).
 
 This skeleton followes several PHP Standards Recommendations (PSR):
