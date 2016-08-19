@@ -2,6 +2,13 @@
     {% set noIndex = true %}
 {% endif %}
 
+{% set pageUrl = c.request.getUri().getBaseUrl() ~ c.request.getUri().getPath() %}
+{% set pageImage = c.request.getUri().getBaseUrl() ~ '/img/icon-200x200.png' %}
+
+{% set siteHost = 'My cool site' %}
+{% set siteName = 'Site' %}
+{% set siteHost = c.request.getUri().getHost() %}
+
 <!DOCTYPE html>
 <html lang="de" itemscope="itemscope" itemtype="http://schema.org/WebPage">
     <head>
@@ -14,36 +21,31 @@
 
             <base target="_top" />
 
-            <title itemprop="name">{% block title %}Willkommen{% endblock %}</title>
+            <title itemprop="name">{% block titlePrepend %}{% endblock titlePrepend %}{% block title %}Willkommen{% endblock title %}{% block titleAppend %} | {{ siteName }}{% endblock titleAppend %}</title>
 
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+            <meta name="robots" content="{{ noIndex ? 'no' }}index, follow" />
 
-            {% if not noIndex %}
-                <meta name="description" lang="de" content="{% block description %}{% endblock %}" />
-                <meta name="robots" content="index, follow">
-            {% else %}
-                <meta name="robots" content="noindex, follow" />
-            {% endif %}
+            <meta name="description" lang="de" content="{% block description %}{{ siteSlogan }}{% endblock %}" />
 
-            <meta name="author" content="Ansas Meyer" />
+            <meta name="author" content="" />
             <meta name="rating" content="general" />
 
             <meta itemprop="isFamilyFriendly" content="True" />
 
             <meta property="og:locale" content="de_DE" />
             <meta property="og:type" content="website" />
-            <meta property="og:title" content="{{ block('title') }}" />
-            <meta property="og:description" content="" />
-            <meta property="og:url" content="{{ c.request.getUri() }}" />
-            <meta property="og:image" itemprop="image" content="" />
-            <meta property="og:image:width" content="200" />
-            <meta property="og:image:height" content="200" />
+            <meta property="og:site_name" content="{{ siteHost }}" />
+            <meta property="og:title" content="{% block titleOpenGraph %}{{ block('title') }}{% endblock %}" />
+            <meta property="og:description" content="{% block descriptionOpenGraph %}{{ block('description') }}{% endblock %}" />
+            <meta property="og:url" content="{{ pageUrl }}" />
+            <meta property="og:image" itemprop="image" content="{{ pageImage }}" />
 
             <meta name="twitter:card" content="summary" />
-            <meta name="twitter:title" content="{{ block('title') }}" />
-            <meta name="twitter:description" content="" />
-            <meta name="twitter:image" itemprop="thumbnailUrl" content="" />
+            <meta name="twitter:title" content="{% block titleTwitter %}{{ block('title') }}{% endblock %}" />
+            <meta name="twitter:description" content="{% block descriptionTwitter %}{{ block('description') }}{% endblock %}" />
+            <meta name="twitter:image" itemprop="thumbnailUrl" content="{{ pageImage }}" />
 
             <link rel="shortcut icon" href="/favicon.ico" />
             <link rel="apple-touch-icon" href="/apple-touch-icon-precomposed.png" />
@@ -85,7 +87,7 @@
 
             {% block footer %}
                 <div class="container">
-                    &copy;<span itemprop="copyrightYear">{{ "now"|date("Y") }}</span> <span itemprop="copyrightHolder">{{ c.request.getUri().getHost() }}</span>
+                    &copy;<span itemprop="copyrightYear">{{ "now"|date("Y") }}</span> <span itemprop="copyrightHolder">{{ siteHost }}</span>
                 </div>
             {% endblock footer %}
 
