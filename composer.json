@@ -16,13 +16,13 @@
     "authors": [
         {
             "name": "Ansas Meyer",
-            "email": "webmaster@ansas-meyer.de",
+            "email": "mail@ansas-meyer.de",
             "homepage": "https://ansas-meyer.de"
         }
     ],
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "": "src/"
         }
     },
     "config": {
