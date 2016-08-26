@@ -18,7 +18,7 @@
 
     <!-- Add any additional test suites you want to run here -->
     <testsuites>
-        <testsuite name="Test Source">
+        <testsuite name="Tests">
             <directory>scr/Tests</directory>
         </testsuite>
     </testsuites>

@@ -7,7 +7,7 @@
 
 A skeleton for [Slim 3 Framework](http://slimframework.com/).
 
-This skeleton followes several PHP Standards Recommendations (PSR):
+This skeleton follows several PHP Standards Recommendations (PSR):
 - [x] PSR-1 / PSR-2 (Coding standards)
 - [x] PSR-3 (Logging) via Monolog
 - [x] PSR-4 (Autoloading) via Composer
@@ -44,8 +44,10 @@ path/to/project
 |   |-- Provider     <- Put custom providers here
 |   `-- Tests
 `-- tmp              <- Temporary files
-    |-- session
-    `-- twig
+|   |-- session
+|   `-- twig
+`-- var              <- Put other data in here
+
 ```
 
 ## Requirements

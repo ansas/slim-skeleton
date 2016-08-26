@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ruleset name="Slim CS">
-    <description>Slim coding standard</description>
+<ruleset name="Application">
+    <description>Coding standard</description>
     <!-- Paths to check -->
     <file>src</file>
     <file>app/slim</file>
