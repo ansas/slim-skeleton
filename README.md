@@ -5,7 +5,7 @@
 [![Latest Unstable Version](https://poser.pugx.org/ansas/slim-skeleton/v/unstable)](https://packagist.org/packages/ansas/slim-skeleton)
 [![License](https://poser.pugx.org/ansas/slim-skeleton/license)](https://packagist.org/packages/ansas/slim-skeleton)
 
-A skeleton for [Slim 3 Framework](http://slimframework.com/).
+Skeleton for a web service or an application (based on [Slim 3 framework](http://slimframework.com/)).
 
 This skeleton follows several PHP Standards Recommendations (PSR):
 - [x] PSR-1 / PSR-2 (Coding standards)
