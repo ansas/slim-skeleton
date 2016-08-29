@@ -1,7 +1,7 @@
 {
     "name": "ansas/slim-skeleton",
     "type": "application",
-    "description": "Slim 3 framework skeleton (for a web service or application)",
+    "description": "Slim 3 framework skeleton (for a web service or an application)",
     "keyworks": [
         "Slim",
         "Slim 3",

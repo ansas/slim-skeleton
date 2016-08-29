@@ -1,4 +1,4 @@
-# Slim 3 Skeleton
+# Slim 3 framework skeleton
 
 [![Latest Stable Version](https://poser.pugx.org/ansas/slim-skeleton/v/stable)](https://packagist.org/packages/ansas/slim-skeleton)
 [![Total Downloads](https://poser.pugx.org/ansas/slim-skeleton/downloads)](https://packagist.org/packages/ansas/slim-skeleton)
@@ -99,4 +99,4 @@ Please make sure to follow [PSR-1](https://github.com/php-fig/fig-standards/blob
 
 ## License
 
-See the [LICENSE](LICENSE.md) file.
+__MIT license__ (see the [LICENSE](LICENSE.md) file for more information).
