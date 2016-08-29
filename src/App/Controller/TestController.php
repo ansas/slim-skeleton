@@ -1,11 +1,8 @@
 <?php
 /**
- * This file is part of the PHP components package.
+ * This file is part of the Slim 3 framework skeleton.
  *
- * For the full copyright and license information, please view the LICENSE.md file distributed with this source code.
- *
- * @license MIT License
- * @link    https://github.com/ansas/php-component
+ * @link https://github.com/ansas/slim-skeleton
  */
 
 namespace App\Controller;

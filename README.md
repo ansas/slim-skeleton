@@ -14,9 +14,9 @@ This skeleton follows several PHP Standards Recommendations (PSR):
 - [x] PSR-7 (HTTP message) via Slim
 
 ## Included components
-* Slim 3.x
-* Flash messages
-* Twig template engine 1.x
+* Slim 3.x incl. Flash messages & Twig view ([MIT License](https://github.com/slimphp/Slim/blob/3.x/LICENSE.md))
+* Twig template engine 1.x ([BSD License](https://github.com/twigphp/Twig/blob/1.x/LICENSE))
+* Monolog logger 1.x ([MIT License](https://github.com/Seldaek/monolog/blob/master/LICENSE))
 * Custom Error and NotFound handler
 * Middlewares: Cors, ForceRoute, Runtime, NoTrailingSlash, etc.
 * Provider: ConsoleLoggerProvider, ExtendedRequestProvider, PdoProvider, ProfilerProvider, etc.
@@ -47,13 +47,12 @@ path/to/project
 |   |-- session
 |   `-- twig
 `-- var              <- Put other data in here
-
 ```
 
 ## Requirements
 
 * PHP 7
-* [Composer](https://getcomposer.org/)
+* [Composer](https://getcomposer.org/) ([MIT License](https://github.com/composer/composer/blob/master/LICENSE))
 
 ## Usage
 
@@ -100,4 +99,4 @@ Please make sure to follow [PSR-1](https://github.com/php-fig/fig-standards/blob
 
 ## License
 
-See the [LICENSE](LICENSE) file.
+See the [LICENSE](LICENSE.md) file.
