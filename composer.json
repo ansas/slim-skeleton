@@ -42,6 +42,7 @@
     "suggest": {
         "slim/http-cache": "Caching: client-side",
         "tedivm/stash": "Caching: server-side PSR-6",
+        "propel/propel": "ORM",
         "squizlabs/php_codesniffer": "Coding standard - should be installed globally",
         "phpdocumentor/phpdocumentor": "Documentation - should be installed globally",
         "phpunit/phpunit": "Testing - should be installed globally"

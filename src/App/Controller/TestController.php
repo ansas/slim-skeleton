@@ -33,17 +33,37 @@ class TestController extends AbstractController
     public function __invoke(Request $request, Response $response, array $args)
     {
         $method   = $args['method'];
-        $params   = $request->getParams();
         $settings = $this->settings['test'];
 
         if ($settings['always'] || $request->getParam($settings['key']) == $settings['value']) {
             if (method_exists($this, $method)) {
-                $this->$method($params);
-                return $response;
+                return $this->$method($request, $response);
             }
         }
 
         return $this->notFound($request, $response);
+    }
+
+    /**
+     * Simulate error.
+     *
+     * Usage:
+     * - <code>/test/error?debug=1</code> For testing develop mode (`displayErrorDetails = true`)
+     * - <code>/test/error</code> For testing production mode (`displayErrorDetails = false`)
+     *
+     * @param Request $request The most recent Request object
+     *
+     * @throws Exception
+     * @internal param Response $response The most recent Response object
+     *
+     */
+    public function error(Request $request)
+    {
+        $params = $request->getQueryParams();
+
+        $this->settings['displayErrorDetails'] = (bool) $params['develop'] ?? false;
+
+        throw new Exception("Test");
     }
 
     /**
@@ -52,13 +72,5 @@ class TestController extends AbstractController
     public function info()
     {
         phpinfo();
-    }
-
-    /**
-     * Simulate error.
-     */
-    public function error()
-    {
-        throw new Exception("Test");
     }
 }

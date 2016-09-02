@@ -56,6 +56,3 @@ mb_internal_encoding("utf-8");
 // Set default internal timezone
 // Note: Needed to save all time values as UTC into database automatically
 date_default_timezone_set("UTC");
-
-// Set locale
-setlocale(LC_ALL, 'de_DE@euro', 'de_DE');

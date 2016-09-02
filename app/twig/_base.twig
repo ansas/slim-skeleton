@@ -1,13 +1,13 @@
-{% if c.request.getQueryParams()|length > 0 %}
+{% if request.getQueryParams()|length > 0 %}
     {% set noIndex = true %}
 {% endif %}
 
-{% set pageUrl = c.request.getUri().getBaseUrl() ~ c.request.getUri().getPath() %}
-{% set pageImage = c.request.getUri().getBaseUrl() ~ '/img/icon-200x200.png' %}
+{% set pageUrl = request.getUri().getBaseUrl() ~ request.getUri().getPath() %}
+{% set pageImage = request.getUri().getBaseUrl() ~ '/img/icon-200x200.png' %}
 
 {% set siteHost = 'My cool site' %}
 {% set siteName = 'Site' %}
-{% set siteHost = c.request.getUri().getHost() %}
+{% set siteHost = request.getUri().getHost() %}
 
 <!DOCTYPE html>
 <html lang="de" itemscope="itemscope" itemtype="http://schema.org/WebPage">
@@ -76,8 +76,10 @@
             {% block contentPrepend %}
             {% endblock contentPrepend %}
 
-            {% block content %}
-            {% endblock content %}
+            <div class="container">
+                {% block content %}
+                {% endblock content %}
+            </div>
 
             {% block contentAppend %}
             {% endblock contentAppend %}

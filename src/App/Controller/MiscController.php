@@ -10,7 +10,6 @@ namespace App\Controller;
 use Ansas\Slim\Controller\AbstractController;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use Throwable;
 
 /**
  * Class MiscController
@@ -21,44 +20,44 @@ use Throwable;
 class MiscController extends AbstractController
 {
     /**
+     * Fallback for static routes.
+     *
+     * @param  string $name Method name (that does not exist)
+     * @param  array  $args Method arguments
+     *
+     * @return Response
+     */
+    public function __call($name, $args)
+    {
+        /** @var Request $request */
+        $request  = array_shift($args);
+
+        /** @var Response $response */
+        $response = array_shift($args);
+
+        // Make sure no internal templates starting with an underscore (_) are called directly
+        if (0 !== strpos($name, '_')) {
+            // Render static template if it exists
+            $file = $this->settings['view']['path'] . '/' . $name . $this->settings['view']['extension'];
+            if (is_file($file)) {
+                return $this->renderTemplate($request, $response, $name);
+            }
+        }
+
+        // Return not found template
+        return $this->notFound($request, $response);
+    }
+
+    /**
      * Index.
      *
-     * @param  Request  $request  The most recent Request object
-     * @param  Response $response The most recent Response object
+     * @param Request  $request
+     * @param Response $response
      *
      * @return Response
      */
     public function index(Request $request, Response $response)
     {
-        $this->renderTemplate($response, 'index');
-    }
-
-    /**
-     * Not found handler.
-     *
-     * @param  Request  $request  The most recent Request object
-     * @param  Response $response The most recent Response object
-     *
-     * @return Response
-     */
-    public function notFound(Request $request, Response $response)
-    {
-        return $this->renderTemplate($response, 'misc-notfound', $status = 404);
-    }
-
-    /**
-     * Error handler.
-     *
-     * @param  Request   $request  The most recent Request object
-     * @param  Response  $response The most recent Response object
-     * @param  Throwable $e
-     *
-     * @return Response
-     */
-    public function error(Request $request, Response $response, Throwable $e)
-    {
-        $this->logger->error($e);
-
-        return $this->renderTemplate($response, 'misc-error', $status = 503);
+        $this->renderTemplate($request, $response, 'index');
     }
 }
