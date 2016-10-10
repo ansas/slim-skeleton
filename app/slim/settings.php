@@ -29,10 +29,10 @@ return [
             'extension' => '.twig',
             'options'   => [
                 'autoescape'       => true,
-                'auto_reload'      => true,
+                'auto_reload'      => ENVIRONMENT == ENVIRONMENT_DEVELOP,
                 'cache'            => TMP_PATH . '/twig',
                 'charset'          => 'utf-8',
-                'debug'            => true,
+                'debug'            => ENVIRONMENT == ENVIRONMENT_DEVELOP,
                 'strict_variables' => false,
             ],
         ],

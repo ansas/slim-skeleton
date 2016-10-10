@@ -23,6 +23,7 @@ $app = new App($container);
 
 // Set up dependencies, middlewares and routes
 require_once $rootPath . '/app/slim/dependencies.php';
+require_once $rootPath . '/app/slim/config.php';
 require_once $rootPath . '/app/slim/middlewares.php';
 require_once $rootPath . '/app/slim/routes.php';
 

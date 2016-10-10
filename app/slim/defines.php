@@ -27,13 +27,13 @@ define('DEBUG', getenv('DEBUG') || ENVIRONMENT == ENVIRONMENT_DEVELOP);
 define('SESSION_LIFETIME', 60 * 60 * 24 * 30);
 define('SESSION_PATH', TMP_PATH . '/session');
 
-define('LOG_FILE', LOG_PATH . '/paniclog');
+define('LOG_FILE', LOG_PATH . '/php.log');
 
 // Set up error handling
 ini_set('display_errors', ENVIRONMENT == ENVIRONMENT_PRODUCTION ? 'Off' : 'stderr');
 ini_set('display_startup_errors', ENVIRONMENT == ENVIRONMENT_PRODUCTION ? 'Off' : 'On');
 ini_set('error_reporting', E_ALL);
-ini_set('error_log', LOG_PATH . '/php.log');
+ini_set('error_log', LOG_FILE);
 ini_set('log_errors', 'On');
 
 // Set up session variables

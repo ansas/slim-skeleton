@@ -24,35 +24,37 @@ This skeleton follows several PHP Standards Recommendations (PSR):
 ## Directory structure
 ```
 path/to/project
-|-- app              <- Application config files
-|   |-- slim         <- Slim config files
-|   `-- twig         <- Twig templates
-|-- bin              <- Own scripts
-|-- etc              <- Own config files (like Apache)
-|-- lib              <- Vendor files (for composer)
-|-- log              <- Log files
-|-- pub              <- Webserver document root
+|-- app                 <- Application config files
+|   |-- slim            <- Slim config files
+|   `-- twig            <- Twig templates
+|-- bin                 <- Own scripts
+|-- etc                 <- Own config files (like Apache)
+|-- lib                 <- Vendor files (for composer)
+|-- log                 <- Log files
+|-- pub                 <- Webserver document root
 |   |-- css
 |   |-- img
 |   |-- js
 |   `-- lib
-|-- src              <- Application classes (\App namespace)
-|   |-- Controller
-|   |-- Handler      <- Put custom handlers here
-|   |-- Middleware   <- Put custom middlewares here
-|   |-- Model
-|   |-- Provider     <- Put custom providers here
-|   `-- Tests
-`-- tmp              <- Temporary files
+|-- src                 <- Application classes
+|   `-- App
+|       |-- Controller
+|       |-- Handler     <- Put custom handlers here
+|       |-- Middleware  <- Put custom middlewares here
+|       |-- Model
+|       |-- Provider    <- Put custom providers here
+|       `-- Tests
+`-- tmp                 <- Temporary files
 |   |-- session
 |   `-- twig
-`-- var              <- Put other data in here
+`-- var                 <- Put other data in here
 ```
 
 ## Requirements
 
 * PHP 7
 * [Composer](https://getcomposer.org/) ([MIT License](https://github.com/composer/composer/blob/master/LICENSE))
++ [PHP components](https://github.com/ansas/php-component) ([MIT License](https://github.com/ansas/php-component/blob/master/LICENSE.md))
 
 ## Usage
 

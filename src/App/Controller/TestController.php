@@ -9,6 +9,8 @@ namespace App\Controller;
 
 use Ansas\Slim\Controller\AbstractController;
 use Exception;
+use Slim\Exception\MethodNotAllowedException;
+use Slim\Exception\NotFoundException;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -45,7 +47,7 @@ class TestController extends AbstractController
     }
 
     /**
-     * Simulate error.
+     * Simulate "error".
      *
      * Usage:
      * - <code>/test/error?debug=1</code> For testing develop mode (`displayErrorDetails = true`)
@@ -54,14 +56,12 @@ class TestController extends AbstractController
      * @param Request $request The most recent Request object
      *
      * @throws Exception
-     * @internal param Response $response The most recent Response object
-     *
      */
     public function error(Request $request)
     {
         $params = $request->getQueryParams();
 
-        $this->settings['displayErrorDetails'] = (bool) $params['develop'] ?? false;
+        $this->settings['displayErrorDetails'] = (bool) ($params['develop'] ?? false);
 
         throw new Exception("Test");
     }
@@ -72,5 +72,32 @@ class TestController extends AbstractController
     public function info()
     {
         phpinfo();
+    }
+
+    /**
+     * Simulate "not allowed".
+     *
+     * @param Request  $request
+     * @param Response $response
+     *
+     * @throws MethodNotAllowedException
+     */
+    public function notAllowed(Request $request, Response $response)
+    {
+        throw new MethodNotAllowedException($request, $response, ['POST']);
+    }
+
+    /**
+     * Simulate "not found".
+     *
+     * @param Request  $request
+     * @param Response $response
+     *
+     * @return void
+     * @throws NotFoundException
+     */
+    public function notFound(Request $request, Response $response)
+    {
+        throw new NotFoundException($request, $response);
     }
 }
