@@ -3,6 +3,7 @@
 
 use Ansas\Slim\Middleware;
 use Ansas\Slim\Provider;
+use Monolog\Logger;
 use Slim\App;
 use Slim\Container;
 use Slim\Http\Environment;
@@ -55,6 +56,16 @@ try {
     $container->register(new Provider\ConsoleLoggerProvider());
     $container->register(new Provider\PdoProvider());
     $container->register(new Provider\ProfilerProvider());
+
+    $color = getenv('COLOR');
+    if (false !== $color) {
+        $container['settings']['logger'] = array_merge($container['settings']['logger'], ['color' => !in_array($color, ['', '0', 'no', 'off'])]);
+    }
+
+    $level = getenv('LEVEL');
+    if (false !== $level) {
+        $container['settings']['logger'] = array_merge($container['settings']['logger'], ['level' => Logger::toMonologLevel($level)]);
+    }
 
     // Add fake route with calculated dynamic handler and run the app
     $app->get($path, $handler);
