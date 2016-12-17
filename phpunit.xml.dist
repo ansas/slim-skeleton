@@ -26,7 +26,7 @@
     <!-- Ignore vendor tests in code coverage reports -->
     <filter>
         <blacklist>
-            <directory suffix=".php">vendor</directory>
+            <directory suffix=".php">lib</directory>
             <directory>bin</directory>
         </blacklist>
         <whitelist>

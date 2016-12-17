@@ -1,6 +1,7 @@
 # files
-composer.lock
 phpcs.xml
 phpdoc.xml
 phpunit.xml
 
+# paths
+.idea
