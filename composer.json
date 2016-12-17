@@ -29,7 +29,7 @@
         "vendor-dir": "lib"
     },
     "require": {
-        "php": ">=7.0",
+        "php": ">=5.4",
         "ansas/php-component": "dev-master",
         "monolog/monolog": "dev-master",
         "slim/slim": "~3",
