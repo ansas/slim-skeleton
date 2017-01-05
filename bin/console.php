@@ -54,7 +54,6 @@ try {
     // Set mock environment and add needed additional providers
     $container['environment'] = Environment::mock();
     $container->register(new Provider\ConsoleLoggerProvider());
-    $container->register(new Provider\PdoProvider());
     $container->register(new Provider\ProfilerProvider());
 
     $color = getenv('COLOR');

@@ -17,5 +17,6 @@ $container->register(new Ansas\Slim\Provider\TwigProvider());
 //$container->register(new Ansas\Slim\Provider\FlashProvider());
 //$container->register(new Ansas\Slim\Provider\LocaleProvider());
 //$container->register(new Ansas\Slim\Provider\LoggerProvider()); // needs "monolog/monolog" package
+//$container->register(new Ansas\Slim\Provider\PdoProvider());
 //$container->register(new Ansas\Slim\Provider\PropelProvider()); // needs "propel/propel" package
 //$container->register(new Ansas\Slim\Provider\SwiftMailerProvider()); // needs "swiftmailer/swiftmailer" package
