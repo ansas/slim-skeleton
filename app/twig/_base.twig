@@ -8,6 +8,12 @@
 {% set siteHost = 'My cool site' %}
 {% set siteName = 'Site' %}
 {% set siteHost = request.getUri().getHost() %}
+{% set siteYear = 2017 %}
+
+{% set isDevZone = constant('ENVIRONMENT') == constant('ENVIRONMENT_DEVELOP') %}
+{% set timestamp = 'now'|date('U') %}
+{% set version = 0.0.1 %}
+{% set year = 'now'|date('Y') %}
 
 <!DOCTYPE html>
 <html lang="de" itemscope="itemscope" itemtype="http://schema.org/WebPage">
@@ -21,17 +27,16 @@
 
             <base target="_top" />
 
-            <title itemprop="name">{% block titlePrepend %}{% endblock titlePrepend %}{% block title %}Willkommen{% endblock title %}{% block titleAppend %} | {{ siteName }}{% endblock titleAppend %}</title>
+            <title>{% block titlePrepend %}{% endblock titlePrepend %}{% block title %}Willkommen{% endblock title %}{% block titleAppend %} | {{ siteName }}{% endblock titleAppend %}</title>
 
-            <meta charset="utf-8">
+            <meta charset="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
             <meta name="robots" content="{{ noIndex ? 'no' }}index, follow" />
 
             <meta name="description" lang="de" content="{% block description %}{{ siteSlogan }}{% endblock %}" />
 
-            <meta name="author" content="" />
-            <meta name="rating" content="general" />
-
+            <meta itemprop="name" content="{{ block('title') }}" />
+            <meta itemprop="image thumbnailUrl" content="{{ pageImage }}" />
             <meta itemprop="isFamilyFriendly" content="True" />
 
             <meta property="og:locale" content="de_DE" />
@@ -40,12 +45,12 @@
             <meta property="og:title" content="{% block titleOpenGraph %}{{ block('title') }}{% endblock %}" />
             <meta property="og:description" content="{% block descriptionOpenGraph %}{{ block('description') }}{% endblock %}" />
             <meta property="og:url" content="{{ pageUrl }}" />
-            <meta property="og:image" itemprop="image" content="{{ pageImage }}" />
+            <meta property="og:image" content="{{ pageImage }}" />
 
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:title" content="{% block titleTwitter %}{{ block('title') }}{% endblock %}" />
             <meta name="twitter:description" content="{% block descriptionTwitter %}{{ block('description') }}{% endblock %}" />
-            <meta name="twitter:image" itemprop="thumbnailUrl" content="{{ pageImage }}" />
+            <meta name="twitter:image" content="{{ pageImage }}" />
 
             <link rel="shortcut icon" href="/favicon.ico" />
             <link rel="apple-touch-icon" href="/apple-touch-icon-precomposed.png" />
@@ -55,9 +60,9 @@
             {% endblock stylePrepend %}
 
             {% block style %}
-                <link rel="stylesheet" href='//cdn.dhm80.de/font/open-sans/font.css'>
+                <link rel="stylesheet" href="//cdn.dhm80.de/font/open-sans/font.css" />
                 <link rel="stylesheet" href="//cdn.dhm80.de/plugin/bootstrap/dist/css/bootstrap.css" />
-                <link rel="stylesheet" href="/css/base.css" />
+                <link rel="stylesheet" href="/css/base.css?{{ isDevZone ? timestamp : version }}" />
             {% endblock style %}
 
             {% block styleAppend %}
@@ -89,7 +94,15 @@
 
             {% block footer %}
                 <div class="container">
-                    &copy;<span itemprop="copyrightYear">{{ "now"|date("Y") }}</span> <span itemprop="copyrightHolder">{{ siteHost }}</span>
+                    &copy;
+                    {% if siteYear < year %}{{ siteYear }} &ndash;{% endif %}
+                    <span itemprop="copyrightYear">{{ year }}</span>
+                    <span itemprop="copyrightHolder creator publisher" itemscope itemtype="http://schema.org/Organization">
+                        <span itemprop="name">{{ siteHost }}</span>
+                    </span>
+                    <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                        <meta itemprop="name" content="" />
+                    </span>
                 </div>
             {% endblock footer %}
 
