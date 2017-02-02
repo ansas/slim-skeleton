@@ -1,11 +1,12 @@
 {% extends "_base.twig" %}
 
 {% set noIndex = true %}
+{% set refreshTarget = router.pathFor('index') %}
 
 {% block title %}Oops, Methode nicht erlaubt{% endblock %}
 
 {% block content %}
     <h1 class="text-danger">Oops!?</h1>
     <p>Na, versucht es jemand mit der Brechstange. Hier geht es nicht weiter.</p>
-    <p>Hier geht es <a href="{{ router.pathFor('index') }}">zurück zur Startseite</a></p>
+    <p>Hier geht es <a href="{{ refreshTarget }}">zurück zur Startseite</a></p>
 {% endblock content %}

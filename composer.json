@@ -33,7 +33,6 @@
         "ansas/php-component": "dev-master",
         "monolog/monolog": "dev-master",
         "slim/slim": "~3",
-        "slim/flash": "dev-master",
         "slim/twig-view": "dev-master",
         "twig/twig": "~1",
         "twig/extensions": "dev-master"

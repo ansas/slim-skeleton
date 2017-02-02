@@ -2,15 +2,16 @@
 
 {% set noIndex = true %}
 {% set refreshInSeconds = 10 %}
+{% set refreshTarget = router.pathFor('index') %}
 
 {% block title %}Oops, Seite nicht gefunden{% endblock %}
 
 {% block headPrepend %}
-    <meta http-equiv="refresh" content="{{ refreshInSeconds }}; url={{ router.pathFor('index') }}" />
+    <meta http-equiv="refresh" content="{{ refreshInSeconds }}; url={{ refreshTarget }}" />
 {% endblock headPrepend %}
 
 {% block content %}
     <h1 class="text-danger">Oops!?</h1>
     <p>Na, da hat was nicht geklappt. Die gewünschte Seite existiert gar nicht (mehr).</p>
-    <p>Hier geht es <a href="{{ router.pathFor('index') }}">zurück zur Startseite</a></p>
+    <p>Hier geht es <a href="{{ refreshTarget }}">zurück zur Startseite</a></p>
 {% endblock content %}

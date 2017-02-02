@@ -34,6 +34,33 @@ class TestController extends AbstractController
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
+        $method   = isset($args['method']) ? $args['method'] : null;
+        $settings = $this->settings['test'];
+
+        $methodIsValid =
+            $method
+            && ($settings['always'] || $request->getParam($settings['key']) == $settings['value'])
+            && method_exists($this, $method)
+        ;
+        if (!$methodIsValid) {
+            $method = 'notFound';
+        }
+
+        return $this->$method($request, $response);
+    }
+
+    /**
+     * Invoke controller.
+     *
+     * @param Request  $request  The most recent Request object
+     * @param Response $response The most recent Response object
+     * @param array    $args
+     *
+     * @return Response
+     * @throws Exception
+     */
+    public function __invoke(Request $request, Response $response, array $args)
+    {
         $method   = $args['method'];
         $settings = $this->settings['test'];
 
