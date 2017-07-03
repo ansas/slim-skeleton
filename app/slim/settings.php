@@ -1,7 +1,5 @@
 <?php
 
-use Monolog\Logger;
-
 return [
     'settings' => [
         // Slim Settings
@@ -12,15 +10,15 @@ return [
         'logger' => [
             'name'      => 'app',
             'path'      => LOG_PATH . '/app.log',
-            'level'     => DEBUG ? Logger::DEBUG : Logger::NOTICE,
-            'trimPaths' => [ROOT_PATH . "/"],
+            'level'     => DEBUG ? Monolog\Logger::DEBUG : Monolog\Logger::NOTICE,
+            'trimPaths' => [ROOT_PATH . '/'],
         ],
 
         // PDO settings
         'database' => [
-            'dsn'      => "mysql:host=localhost;dbname=<DB>",
-            "user"     => "<USER>",
-            "password" => "<PWD>",
+            'dsn'      => 'mysql:host=localhost;dbname=<DB>',
+            'user'     => '<USER>',
+            'password' => '<PWD>',
         ],
 
         // Twig settings
