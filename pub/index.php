@@ -1,4 +1,9 @@
 <?php
+/**
+ * This file is part of the Slim 3 framework skeleton.
+ *
+ * @link https://github.com/ansas/slim-skeleton
+ */
 
 use Slim\App;
 

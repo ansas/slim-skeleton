@@ -1,5 +1,10 @@
 #!/usr/bin/env php
 <?php
+/**
+ * This file is part of the Slim 3 framework skeleton.
+ *
+ * @link https://github.com/ansas/slim-skeleton
+ */
 
 use Ansas\Slim\Middleware;
 use Ansas\Slim\Provider;
@@ -35,8 +40,6 @@ try {
 
     // Sanitize class
     $class = str_replace('/', '\\', $class);
-    $class = preg_replace('/Controller(\\\\)?$/ui', '', $class);
-    $class = preg_replace('/^(\\\\)?(App\\\\)?Controller\\\\/ui', '', $class);
 
     // Set fixed path and build handler
     $path    = "/console";
@@ -52,9 +55,18 @@ try {
     $container = $app->getContainer();
 
     // Set mock environment and add needed additional providers
-    $container['environment'] = Environment::mock();
+    $environment = [];
+    if (isset($container['settings']['console']['environment'])) {
+        $environment = $container['settings']['console']['environment'];
+    };
+    $container['environment'] = Environment::mock($environment);
+
+    // Add needed additional providers
     $container->register(new Provider\ConsoleLoggerProvider());
     $container->register(new Provider\ProfilerProvider());
+
+    // Disable displayErrorDetails as this would interfere with our logger (we don't want any HTML output)
+    $container['settings']['displayErrorDetails'] = false;
 
     $color = getenv('COLOR');
     if (false !== $color) {
@@ -64,6 +76,27 @@ try {
     $level = getenv('LEVEL');
     if (false !== $level) {
         $container['settings']['logger'] = array_merge($container['settings']['logger'], ['level' => Logger::toMonologLevel($level)]);
+    }
+
+    // Check if job is already / still running
+    $parallel          = getenv('PARALLEL');
+    $parallelAllowed   = false !== $parallel && !in_array($parallel, ['', '0', 'no', 'off']);
+    $parallelProcesses = exec("ps ax"
+        . " | grep -v '^\s*" . getmypid() . "\s'"
+        . " | grep -v '\s" . "grep" . "\s'"
+        . " | grep '" . basename(__FILE__) . "\s'"
+        . " | grep '\s" . str_replace('\\', '.', $class) . "\b'"
+        . ($method ? " | grep ':" . $method . "\b'" : "")
+    );
+    if ($parallelProcesses) {
+        if (!$parallelAllowed) {
+            throw new Exception("Job is already / still running");
+        }
+        $app
+            ->getContainer()
+            ->get('logger')
+            ->warning('Job is already running', ['processes' => $parallelProcesses])
+        ;
     }
 
     // Add fake route with calculated dynamic handler and run the app

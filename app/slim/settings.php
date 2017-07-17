@@ -7,22 +7,31 @@ return [
         'displayErrorDetails'               => ENVIRONMENT == ENVIRONMENT_DEVELOP,
 
         // Monolog settings
-        'logger' => [
+        'logger'                            => [
             'name'      => 'app',
             'path'      => LOG_PATH . '/app.log',
             'level'     => DEBUG ? Monolog\Logger::DEBUG : Monolog\Logger::NOTICE,
             'trimPaths' => [ROOT_PATH . '/'],
         ],
 
+        // Console
+        'console'                           => [
+            'environment' => [
+                'HTTP_ACCEPT' => 'text/plain',
+                'HTTPS'       => 'on', // on|off
+                'SERVER_PORT' => 443,
+            ],
+        ],
+
         // PDO settings
-        'database' => [
+        'database'                          => [
             'dsn'      => 'mysql:host=localhost;dbname=<DB>',
             'user'     => '<USER>',
             'password' => '<PWD>',
         ],
 
         // Twig settings
-        'view' => [
+        'view'                              => [
             'path'      => APP_PATH . '/twig',
             'extension' => '.twig',
             'options'   => [
@@ -36,7 +45,7 @@ return [
         ],
 
         // Test controller secret
-        'test' => [
+        'test'                              => [
             'always' => ENVIRONMENT == ENVIRONMENT_DEVELOP,
             'key'    => 'force',
             'value'  => 'it',

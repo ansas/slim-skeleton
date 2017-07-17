@@ -20,6 +20,7 @@ This skeleton follows several PHP Standards Recommendations (PSR):
 * Custom Error and NotFound handler
 * Middlewares: Cors, ForceRoute, Runtime, NoTrailingSlash, etc.
 * Provider: ConsoleLoggerProvider, ExtendedRequestProvider, PdoProvider, ProfilerProvider, etc.
+* Tests: PHPUnit bootstrap and AppTestCase prepared
 
 ## Directory structure
 ```
@@ -43,7 +44,7 @@ path/to/project
 |       |-- Middleware  <- Put custom middlewares here
 |       |-- Model
 |       |-- Provider    <- Put custom providers here
-|       `-- Tests
+|       `-- Tests       <- Put custom tests (unit and integration tests) here
 `-- tmp                 <- Temporary files
 |   |-- session
 |   `-- twig
