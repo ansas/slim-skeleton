@@ -8,6 +8,7 @@
 
 use Ansas\Slim\Middleware;
 use Ansas\Slim\Provider;
+use Ansas\Util\Text;
 use Monolog\Logger;
 use Slim\App;
 use Slim\Container;
@@ -70,7 +71,7 @@ try {
 
     $color = getenv('COLOR');
     if (false !== $color) {
-        $container['settings']['logger'] = array_merge($container['settings']['logger'], ['color' => !in_array($color, ['', '0', 'no', 'off'])]);
+        $container['settings']['logger'] = array_merge($container['settings']['logger'], ['color' => Text::toBool($color)]);
     }
 
     $level = getenv('LEVEL');
@@ -80,7 +81,7 @@ try {
 
     // Check if job is already / still running
     $parallel          = getenv('PARALLEL');
-    $parallelAllowed   = false !== $parallel && !in_array($parallel, ['', '0', 'no', 'off']);
+    $parallelAllowed   = false !== $parallel && Text::toBool($parallel);
     $parallelProcesses = exec("ps ax"
         . " | grep -v '^\s*" . getmypid() . "\s'"
         . " | grep -v '\s" . "grep" . "\s'"
