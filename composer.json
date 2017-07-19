@@ -48,9 +48,9 @@
     },
     "scripts": {
         "bootstrap": "@post-create-project-cmd",
-        "phpunit": "phpunit",
-        "phpcbf": "phpcbf --standard=PSR2 src/",
-        "phpcs": "phpcs --standard=PSR2 src/",
+        "phpunit": "php lib/bin/phpunit",
+        "phpcbf": "php lib/bin/phpcbf --standard=PSR2 src/",
+        "phpcs": "php lib/bin/phpcs --standard=PSR2 src/",
         "post-create-project-cmd": [
             "find log tmp -type d -exec chmod 2777 {} \\;"
         ],
