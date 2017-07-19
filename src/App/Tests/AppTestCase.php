@@ -9,14 +9,19 @@ namespace App\Tests;
 
 use Ansas\Slim\Http\ExtendedRequest;
 use Ansas\Slim\Http\ExtendedResponse;
-use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Slim\App;
 use Slim\Container;
 use Slim\Http\Body;
 use Slim\Http\Environment;
 
-abstract class AppTestCase extends TestCase
+/**
+ * Class AppTestCase
+ *
+ * @package App\Tests
+ * @author  Ansas Meyer <mail@ansas-meyer.de>
+ */
+abstract class AppTestCase extends MinimalTestCase
 {
     /**
      * @var App
